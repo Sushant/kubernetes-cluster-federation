@@ -21,6 +21,10 @@ spec:
       labels:
         region: nginx-us
     spec:
+      volumes:
+      - name: nginx-assets
+        configMap:
+          name: nginx-assets
       containers:
         - name: nginx
           image: nginx:1.10
@@ -28,3 +32,6 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
+        volumeMounts:
+        - name: nginx-assets
+          mountPath: "/usr/share/nginx/html"

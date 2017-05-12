@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: federation
+    kubernetes.io/ingress.global-static-ip-name: kubefed
   name: nginx
 spec:
   backend:
