@@ -1,0 +1,31 @@
+DNS resolution magic is for Services NOT Ingress
+    Demo (external) and (Internal)
+    External (point at a single region thats up, point at single region thats down) Both Should work and be re-routed to a region thats available
+    Internal same as above but we can refer to it just by a local name 'nginx.default.kfed'
+
+Federated Ingress shows that Global Load Balancing will route to all clusters that are available
+
+Make a single nginx instance in US.
+Make a fully federated nginx instance in Asian and US
+All Should have configmaps showing the region
+
+
+
+
+Deploy Service against Federation Controller
+Show the DNS direct endpoint checks to see all are alive
+Show Global Load Balancer endpoint will hit different locations based on source ip.
+Internal Cluster to Cluster service discovery via DNS
+
+1. Deploy Federation Control plane
+2. Spin up 2 clusters in different zones
+3. Deploy config map to each cluster that shows region name for example.
+
+Show Global Load Balancer working
+
+
+Add or Change Static asset
+
+Cluster->Cluster dns resolution test
+    Deploy another service only in 1 zone.
+    Try to access that service from other zone.
