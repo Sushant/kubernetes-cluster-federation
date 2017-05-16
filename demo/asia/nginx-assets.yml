@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: nginx-assets
 data:
-  cluster.html: |-
+  index.html: |-
     <html>
     <body>
     <div style="align-content: center; font-size: 84pt">Asia East</div>

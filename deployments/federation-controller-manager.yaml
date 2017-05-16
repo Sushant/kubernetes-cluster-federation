@@ -17,9 +17,12 @@ spec:
       - name: ssl
         hostPath:
           path: /etc/ssl
+      - name: federation-apiserver-kubeconfig
+        secret:
+          secretName: federation-apiserver-kubeconfig
       containers:
       - name: controller-manager
-        image: gcr.io/google_containers/hyperkube-amd64:v1.6.0
+        image: gcr.io/google_containers/hyperkube-amd64:v1.6.2
         env:
           - name: POD_NAMESPACE
             valueFrom:
@@ -40,7 +43,7 @@ spec:
           - federation-controller-manager
           - --master=https://federation-apiserver:443
           - --dns-provider=google-clouddns
-          - --federation-name=federation
+          - --federation-name=kfed
           - --zone-id=$(ZONE_ID)
           - --zone-name=$(ZONE_NAME)
           - --v=2
@@ -48,6 +51,8 @@ spec:
         - name: ssl
           readOnly: true
           mountPath: /etc/ssl
+        - name: federation-apiserver-kubeconfig
+          mountPath: /etc/federation/federation-apiserver-kubeconfig
         ports:
           - containerPort: 443
             name: https

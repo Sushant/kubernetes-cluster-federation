@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: ReplicaSet
 metadata:
-  name: nginx
+  name: nginx-local
 spec:
   replicas: 4
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-local
     spec:
       volumes:
       - name: nginx-assets

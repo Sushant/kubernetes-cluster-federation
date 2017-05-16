@@ -1,10 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  name: nginx-local
   annotations:
     kubernetes.io/ingress.global-static-ip-name: kubefed
-  name: nginx
 spec:
-  backend:
-    serviceName: nginx
-    servicePort: 80
+  rules:
+  - host: "helloworld.local.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: "nginx-local"
+          servicePort: 80
